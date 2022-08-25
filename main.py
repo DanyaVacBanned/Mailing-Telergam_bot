@@ -8,7 +8,7 @@ db = Database('db.db')
 
 #BOT INITALIZING
 logging.basicConfig(level=logging.INFO)
-TOKEN = '5522829055:AAG1m1aPXGDyOagznAH9WWYv5TA4oA8VtDw'
+TOKEN = 'Bot Token'
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
 
@@ -17,12 +17,12 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands='start')
 async def get_started(message: types.Message):
-    await bot.send_message(message.chat.id, "Привет! Меня зовут Гоша! Мой создатель поручил мне скидывать вам всякие смешнявые смешнявки! Каждый, кто подписан на меня - будет получать отборные мемесы каждый раз, когда создатель захочет вас порадовать!:)")
+    await bot.send_message(message.chat.id, 'HELLO TEXT')
     if not (db.user_exists(message.chat.id)):
         db.add_user(message.chat.id)
         print('Пользователь зарегестрирован!')
     else:
-        await bot.send_message(message.chat.id, 'Вы уже зарегестрированы!')
+        await bot.send_message(message.chat.id, 'You are allready registred')
 
 
 @dp.message_handler(commands='sendall')
